@@ -1,6 +1,5 @@
 name: Generic-CI
-on:
-  workflow_dispatch:
+on: [push, pull_request]
 jobs:
   ci:
     uses: cdornele/terraform-modules-ci/.github/workflows/ci-tf-modules.yml@development
