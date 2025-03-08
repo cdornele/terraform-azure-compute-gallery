@@ -1,16 +1,52 @@
 <!-- BEGIN_TF_DOCS -->
-## Requirements
+## Version compatibility by CD Azure Modules
 
-| Name | Version |
-|------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3 |
-| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~> 4.10 |
+| Module version | Terraform version | AzureRM version |
+| -------------- | ----------------- | --------------- |
+| >= 7.x.x       | 1.3.x             | >= 3.0          |
+| >= 6.x.x       | 1.x               | >= 3.0          |
+| >= 5.x.x       | 0.15.x            | >= 2.0          |
+| >= 4.x.x       | 0.13.x / 0.14.x   | >= 2.0          |
+| >= 3.x.x       | 0.12.x            | >= 2.0          |
+| >= 2.x.x       | 0.12.x            | < 2.0           |
+| <  2.x.x       | 0.11.x            | < 2.0           |
+
+## Contributing
+
+If you’d like to contribute to this repository, you’re welcome to use our pre-commit Git hook configuration. It helps automate file updates and formatting while ensuring compliance with our Terraform module best practices.
+
+For more details, check out the CONTRIBUTING.md file.
+
+## Usage
+
+```hcl
+
+provider "azurerm" {
+  features {}
+}
+
+resource "azurerm_resource_group" "example" {
+  name     = "example-resources"
+  location = "East US"
+}
+
+module "shared_image_gallery" {
+  source                    = "../.."
+  shared_image_gallery_name = "example-sig"
+  resource_group_name       = azurerm_resource_group.example.name
+  location                  = azurerm_resource_group.example.location
+  description               = "Example Shared Image Gallery"
+  tags = {
+    environment = "development"
+  }
+}
+```
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | ~> 4.10 |
+| azurerm | ~> 4.10 |
 
 ## Modules
 
@@ -26,15 +62,15 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_description"></a> [description](#input\_description) | The description of the Shared Image Gallery | `string` | `"Shared Image Gallery created by Terraform"` | no |
-| <a name="input_location"></a> [location](#input\_location) | The location of the Shared Image Gallery | `string` | n/a | yes |
-| <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | The name of the resource group in which the Shared Image Gallery will be created | `string` | n/a | yes |
-| <a name="input_shared_image_gallery_name"></a> [shared\_image\_gallery\_name](#input\_shared\_image\_gallery\_name) | The name of the Shared Image Gallery | `string` | n/a | yes |
-| <a name="input_tags"></a> [tags](#input\_tags) | A mapping of tags to assign to the resource. | `map(string)` | `{}` | no |
+| description | The description of the Shared Image Gallery | `string` | `"Shared Image Gallery created by Terraform"` | no |
+| location | The location of the Shared Image Gallery | `string` | n/a | yes |
+| resource\_group\_name | The name of the resource group in which the Shared Image Gallery will be created | `string` | n/a | yes |
+| shared\_image\_gallery\_name | The name of the Shared Image Gallery | `string` | n/a | yes |
+| tags | A mapping of tags to assign to the resource. | `map(string)` | `{}` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_shared_image_gallery_id"></a> [shared\_image\_gallery\_id](#output\_shared\_image\_gallery\_id) | The ID of the Shared Image Gallery |
+| shared\_image\_gallery\_id | The ID of the Shared Image Gallery |
 <!-- END_TF_DOCS -->
