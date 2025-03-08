@@ -9,12 +9,12 @@ resource "azurerm_resource_group" "example" {
 }
 
 module "shared_image_gallery" {
-  source              = "../.."
+  source                    = "../.."
   shared_image_gallery_name = "example-sig"
-  resource_group_name = azurerm_resource_group.example.name
-  location            = azurerm_resource_group.example.location
-  description         = "Example Shared Image Gallery"
-  tags                = {
+  resource_group_name       = azurerm_resource_group.example.name
+  location                  = azurerm_resource_group.example.location
+  description               = "Example Shared Image Gallery"
+  tags = {
     environment = "development"
   }
 }

@@ -20,7 +20,7 @@ variable "location" {
 variable "description" {
   description = "The description of the Shared Image Gallery"
   type        = string
-  default = "Shared Image Gallery created by Terraform"
+  default     = "Shared Image Gallery created by Terraform"
 }
 
 variable "tags" {
