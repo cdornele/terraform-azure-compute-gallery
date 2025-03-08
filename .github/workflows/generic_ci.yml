@@ -1,6 +1,12 @@
 name: Generic-CI
 on:
-  workflow_dispatch:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+    branches:
+      - main
+      - master
 
 permissions:
   contents: write
