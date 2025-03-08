@@ -62,6 +62,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| community\_gallery | Configure the Shared Image Gallery as a Community Gallery. | <pre>object({<br/>    eula            = string<br/>    prefix          = string<br/>    publisher_email = string<br/>    publisher_uri   = string<br/>  })</pre> | `null` | no |
 | description | The description of the Shared Image Gallery | `string` | `"Shared Image Gallery created by Terraform"` | no |
 | location | The location of the Shared Image Gallery | `string` | n/a | yes |
 | resource\_group\_name | The name of the resource group in which the Shared Image Gallery will be created | `string` | n/a | yes |
