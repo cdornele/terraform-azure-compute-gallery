@@ -2,4 +2,4 @@ name: Generic-CI
 on: [push]
 jobs:
   ci:
-    uses: cdorne/terraform-modules-ci/.github/workflows/ci-tf-modules@delevopment
+    uses: cdorne/terraform-modules-ci/.github/workflows/ci-tf-modules.yml@delevopment
