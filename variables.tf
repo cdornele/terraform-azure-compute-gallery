@@ -23,6 +23,17 @@ variable "description" {
   default     = "Shared Image Gallery created by Terraform"
 }
 
+variable "community_gallery" {
+  description = "Configure the Shared Image Gallery as a Community Gallery."
+  type = object({
+    eula            = string
+    prefix          = string
+    publisher_email = string
+    publisher_uri   = string
+  })
+  default = null
+}
+
 variable "tags" {
   description = "A mapping of tags to assign to the resource."
   type        = map(string)

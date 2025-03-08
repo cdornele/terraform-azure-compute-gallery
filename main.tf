@@ -8,6 +8,20 @@ resource "azurerm_shared_image_gallery" "this" {
   location            = var.location
   description         = var.description
   tags                = var.tags
+
+  dynamic "sharing" {
+    for_each = var.community_gallery[*]
+    content {
+      permission = "Community"
+
+      community_gallery {
+        eula            = sharing.value.eula
+        prefix          = sharing.value.prefix
+        publisher_email = sharing.value.publisher_email
+        publisher_uri   = sharing.value.publisher_uri
+      }
+    }
+  }
 }
 
 
