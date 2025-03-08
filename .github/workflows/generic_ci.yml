@@ -3,7 +3,9 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write  # This is required for actions/checkout
+  contents: write
+  security-events: write
+  actions: read
 
 jobs:
   ci:
