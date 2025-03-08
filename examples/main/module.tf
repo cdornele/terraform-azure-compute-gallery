@@ -15,6 +15,6 @@ module "shared_image_gallery" {
   location            = azurerm_resource_group.example.location
   description         = "Example Shared Image Gallery"
   tags                = {
-    environment = "dev"
+    environment = "development"
   }
 }
