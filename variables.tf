@@ -7,6 +7,18 @@ variable "shared_image_gallery_name" {
   type        = string
 }
 
+variable "prefixes" {
+  description = "A mapping of prefixes to assign to the resource."
+  type        = list(string)
+  default     = []
+}
+
+variable "suffixes" {
+  description = "A mapping of suffixes to assign to the resource."
+  type        = list(string)
+  default     = []
+}
+
 variable "resource_group_name" {
   description = "The name of the resource group in which the Shared Image Gallery will be created"
   type        = string
