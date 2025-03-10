@@ -41,6 +41,18 @@ module "shared_image_gallery" {
   tags = {
     environment = "development"
   }
+  shared_images_definitions = [
+    {
+      name = "24_10"
+      identifier = {
+        offer     = "ubuntu-24_04-lts"
+        publisher = "Canonical"
+        sku       = "ubuntu-pro"
+      }
+      os_type     = "Linux"
+      description = "Ubuntu 24.04 LTS Pro"
+    }
+  ]
 }
 ```
 
@@ -59,6 +71,7 @@ No modules.
 
 | Name | Type |
 |------|------|
+| [azurerm_shared_image.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/shared_image) | resource |
 | [azurerm_shared_image_gallery.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/shared_image_gallery) | resource |
 | [azurecaf_name.shared_image_gallery](https://registry.terraform.io/providers/aztfmod/azurecaf/2.0.0-preview3/docs/data-sources/name) | data source |
 
@@ -72,6 +85,7 @@ No modules.
 | prefixes | A mapping of prefixes to assign to the resource. | `list(string)` | `[]` | no |
 | resource\_group\_name | The name of the resource group in which the Shared Image Gallery will be created | `string` | n/a | yes |
 | shared\_image\_gallery\_name | The name of the Shared Image Gallery | `string` | n/a | yes |
+| shared\_images\_definitions | A list of Shared Image definitions to create in the Shared Image Gallery | <pre>list(object({<br/>    name = string<br/>    identifier = object({<br/>      offer     = string<br/>      publisher = string<br/>      sku       = string<br/>    })<br/>    os_type                             = string<br/>    description                         = optional(string)<br/>    disk_types_not_allowed              = optional(list(string))<br/>    end_of_life_date                    = optional(string)<br/>    eula                                = optional(string)<br/>    specialized                         = optional(bool)<br/>    architecture                        = optional(string, "x64")<br/>    hyper_v_generation                  = optional(string, "V1")<br/>    max_recommended_vcpu_count          = optional(number)<br/>    min_recommended_vcpu_count          = optional(number)<br/>    max_recommended_memory_in_gb        = optional(number)<br/>    min_recommended_memory_in_gb        = optional(number)<br/>    privacy_statement_uri               = optional(string)<br/>    release_note_uri                    = optional(string)<br/>    trusted_launch_enabled              = optional(bool)<br/>    trusted_launch_supported            = optional(bool)<br/>    confidential_vm_supported           = optional(bool)<br/>    confidential_vm_enabled             = optional(bool)<br/>    accelerated_network_support_enabled = optional(bool)<br/>    tags                                = optional(map(string))<br/>  }))</pre> | `[]` | no |
 | suffixes | A mapping of suffixes to assign to the resource. | `list(string)` | `[]` | no |
 | tags | A mapping of tags to assign to the resource. | `map(string)` | `{}` | no |
 
@@ -80,4 +94,5 @@ No modules.
 | Name | Description |
 |------|-------------|
 | shared\_image\_gallery\_id | The ID of the Shared Image Gallery |
+| shared\_images\_definitions | A list of Shared Image definitions created in the Shared Image Gallery |
 <!-- END_TF_DOCS -->
