@@ -1,2 +1,3 @@
 location                         = "eastus"
 resource_group_name     = "example-rg"
+shared_image_gallery_name = "example"

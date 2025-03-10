@@ -33,6 +33,8 @@ resource "azurerm_resource_group" "example" {
 module "shared_image_gallery" {
   source                    = "../.."
   shared_image_gallery_name = "example-sig"
+  prefixes                  = ["az", "eus1"]
+  suffixes                  = ["dev", "01"]
   resource_group_name       = azurerm_resource_group.example.name
   location                  = azurerm_resource_group.example.location
   description               = "Example Shared Image Gallery"
@@ -46,6 +48,7 @@ module "shared_image_gallery" {
 
 | Name | Version |
 |------|---------|
+| azurecaf | 2.0.0-preview3 |
 | azurerm | ~> 4.10 |
 
 ## Modules
@@ -57,6 +60,7 @@ No modules.
 | Name | Type |
 |------|------|
 | [azurerm_shared_image_gallery.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/shared_image_gallery) | resource |
+| [azurecaf_name.shared_image_gallery](https://registry.terraform.io/providers/aztfmod/azurecaf/2.0.0-preview3/docs/data-sources/name) | data source |
 
 ## Inputs
 
@@ -65,8 +69,10 @@ No modules.
 | community\_gallery | Configure the Shared Image Gallery as a Community Gallery. | <pre>object({<br/>    eula            = string<br/>    prefix          = string<br/>    publisher_email = string<br/>    publisher_uri   = string<br/>  })</pre> | `null` | no |
 | description | The description of the Shared Image Gallery | `string` | `"Shared Image Gallery created by Terraform"` | no |
 | location | The location of the Shared Image Gallery | `string` | n/a | yes |
+| prefixes | A mapping of prefixes to assign to the resource. | `list(string)` | `[]` | no |
 | resource\_group\_name | The name of the resource group in which the Shared Image Gallery will be created | `string` | n/a | yes |
 | shared\_image\_gallery\_name | The name of the Shared Image Gallery | `string` | n/a | yes |
+| suffixes | A mapping of suffixes to assign to the resource. | `list(string)` | `[]` | no |
 | tags | A mapping of tags to assign to the resource. | `map(string)` | `{}` | no |
 
 ## Outputs
