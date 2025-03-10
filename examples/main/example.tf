@@ -19,4 +19,16 @@ module "shared_image_gallery" {
   tags = {
     environment = "development"
   }
+  shared_images_definitions = [
+    {
+      name = "24_10"
+      identifier = {
+        offer     = "ubuntu-24_04-lts"
+        publisher = "Canonical"
+        sku       = "ubuntu-pro"
+      }
+      os_type     = "Linux"
+      description = "Ubuntu 24.04 LTS Pro"
+    }
+  ]
 }
